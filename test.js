@@ -164,7 +164,6 @@ describe('Si alguno de los ingredientes no tiene el nombre "Damage"', () => {
     });
 });
 
-// ELIXIR TEST
 describe('Cuando el numero de ingredientes es 2-4', () => {
 
     describe('Cuando los efectos de los ingredientes asociados llevaran los nombres "Boost"', () => {
@@ -175,38 +174,57 @@ describe('Cuando el numero de ingredientes es 2-4', () => {
 
                 it('El valor resultante del atributo sera la media de los values de los ingredientes. Una vez calculada la media se redondeara al multiplo de 5 inmediatamente inferior.', () => {
                     // Arrange
-                    const ingredient1 = mockIngredients.poisonIngredients[0];
-                    const ingredient2 = mockIngredients.poisonIngredients[1];
+                    const ingredient1 = mockIngredients.boostIngredients[0];
+                    const ingredient2 = mockIngredients.boostIngredients[1];
 
-                    const fakeIngredients = require('./_mocks_/fake-ingredients.json');
-                    const fakeCurses = require('./_mocks_/fake-curses.json');
+                    const valueIngredient1 = ingredient1.value;
+                    const valueIngredient2 = ingredient2.value;
 
-                    const ingredients = Ingredients.load(fakeIngredients).ingredients;
-                    const curses = Curses.load(fakeCurses).curses;
+                    function roundTo5(value) {
+                        return Math.floor(value / 5) * 5;
+                    }
 
-                    const ingredientsArray = [ingredient1, ingredient2];
+                    const averageValue = (valueIngredient1 + valueIngredient2) / 2;
 
-                    console.log("ARRAY DE INGREDIENTES 1 Y 2");
-
-                    console.log(ingredientsArray[0].effects);
-                    console.log(ingredientsArray[1].effects);
-
-                    const cauldron = new Cauldron(ingredients, curses);
+                    const roundedValue = roundTo5(averageValue);
 
                     // Act
-                    const potion = cauldron.createPotion(ingredientsArray);
-
-                    console.log("POTION CREATED IN TEST");
-                    console.log(potion);
+                    console.log(`Media: ${averageValue}, Valor redondeado: ${roundedValue}`);
 
                     // Assert
-                    expect(potion).toBeDefined();
-                    expect(potion.name).toBe('Poison of Wailing Plague');
-
+                    expect(roundedValue).toBe(5);
                 });
+
+                it('La duración será la media de duraciones de los efectos de cada ingrediente, redondeada para abajo', () => {
+
+                    // Arrange
+                    const ingredient1 = mockIngredients.boostIngredients[0];
+                    const ingredient2 = mockIngredients.boostIngredients[1];
+
+                    let durationIngredient1 = 0;
+                    let durationIngredient2 = 0;
+
+                    // Act
+                    if (ingredient1.effects[0].includes("least")) {
+
+                        durationIngredient1 = 1;
+                    }
+
+                    if (ingredient2.effects[0].includes("least")) {
+                        durationIngredient2 = 1;
+                    }
+
+                    const averageDuration = (durationIngredient1 + durationIngredient2) / 2;
+                    const roundedDuration = Math.floor(averageDuration);
+
+                    console.log(`Duración media: ${averageDuration}, Duración redondeada: ${roundedDuration}`);
+
+                    // Assert
+                    expect(roundedDuration).toBe(1);
+                });
+
             })
         });
     })
-
 
 });

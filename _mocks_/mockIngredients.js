@@ -95,9 +95,35 @@ const failedPoisonIngredients = [
 	},
 ]
 
+const boostIngredients = [
+	{
+		_id: "6702b4f876863c206a48cd20",
+		name: "Radiant Petal",
+		description: "A petal that enhances charisma with its ethereal glow.",
+		value: 9,
+		effects: [
+			"least_boost_charisma"
+		],
+		image: "/images/ingredients/boost/boost_13.webp",
+		type: "ingredient"
+	},
+	{
+		_id: "6702b4f876863c206a48cd20",
+		name: "Radiant Petal",
+		description: "A petal that enhances charisma with its ethereal glow.",
+		value: 9,
+		effects: [
+			"least_boost_charisma"
+		],
+		image: "/images/ingredients/boost/boost_13.webp",
+		type: "ingredient"
+	},
+]
+
 
 module.exports = {
 	antidoteIngredient,
 	poisonIngredients,
-	failedPoisonIngredients
+	failedPoisonIngredients,
+	boostIngredients
 };
