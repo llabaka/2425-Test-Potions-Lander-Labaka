@@ -330,12 +330,12 @@ describe('Cuando el numero de ingredientes es 2-4', () => {
                     // Act
                     if (!ingredient1.effects[0].includes("lesser" || "least" || "greater")) {
 
-                        durationIngredient1 = 1;
+                        durationIngredient1 = 2;
                     }
 
                     if (!ingredient2.effects[0].includes("lesser" || "least" || "greater")) {
 
-                        durationIngredient2 = 1;
+                        durationIngredient2 = 2;
                     }
 
                     const averageDuration = (durationIngredient1 + durationIngredient2) / 2;
@@ -344,7 +344,7 @@ describe('Cuando el numero de ingredientes es 2-4', () => {
                     console.log(`Duración media: ${averageDuration}, Duración redondeada: ${roundedDuration}`);
 
                     // Assert
-                    expect(roundedDuration).toBe(1);
+                    expect(roundedDuration).toBe(2);
                 });
 
             })
@@ -396,10 +396,76 @@ describe('Cuando el numero de ingredientes es 2-4', () => {
                     // Act
                     if (ingredient1.effects[0].includes("greater")) {
 
-                        durationIngredient1 = 1;
+                        durationIngredient1 = 3;
                     }
 
                     if (ingredient2.effects[0].includes("greater")) {
+
+                        durationIngredient2 = 3;
+                    }
+
+                    const averageDuration = (durationIngredient1 + durationIngredient2) / 2;
+                    const roundedDuration = Math.floor(averageDuration);
+
+                    console.log(`Duración media: ${averageDuration}, Duración redondeada: ${roundedDuration}`);
+
+                    // Assert
+                    expect(roundedDuration).toBe(3);
+                });
+
+            })
+        });
+    })
+
+    describe('Cuando los efectos de los ingredientes asociados llevaran los nombres "Boost"', () => {
+
+        describe('Cuando todos los ingredientes tienen el mismo atributo (INT, DEX...)', () => {
+
+            describe('Cuando todos los efectos son diferentes', () => {
+
+                it('El valor resultante del atributo sera la media de los values de los ingredientes. Una vez calculada la media se redondeara al multiplo de 5 inmediatamente inferior.', () => {
+                    // Arrange
+                    const ingredient1 = mockIngredients.boostDifferentIngredients[0];
+                    const ingredient2 = mockIngredients.boostDifferentIngredients[1];
+
+                    const valueIngredient1 = ingredient1.value;
+                    const valueIngredient2 = ingredient2.value;
+
+                    function roundTo5(value) {
+                        return Math.floor(value / 5) * 5;
+                    }
+
+                    const averageValue = (valueIngredient1 + valueIngredient2) / 2;
+
+                    const roundedValue = roundTo5(averageValue);
+
+                    // Act
+                    console.log(`Media: ${averageValue}, Valor redondeado: ${roundedValue}`);
+
+                    // Assert
+                    expect(roundedValue).toBe(120);
+                });
+
+                it('La duración será la media de duraciones de los efectos de cada ingrediente, redondeada para abajo', () => {
+
+                    // Arrange
+                    const ingredient1 = mockIngredients.boostDifferentIngredients[0];
+                    const ingredient2 = mockIngredients.boostDifferentIngredients[1];
+
+                    let durationIngredient1 = 0;
+                    let durationIngredient2 = 0;
+
+                    console.log("INGREDIENT 1 EFFECTS");
+
+                    console.log(ingredient1.effects);
+
+                    // Act
+                    if (ingredient1.effects[0].includes("greater")) {
+
+                        durationIngredient1 = 3;
+                    }
+
+                    if (ingredient2.effects[0].includes("lesser")) {
 
                         durationIngredient2 = 1;
                     }
@@ -410,7 +476,7 @@ describe('Cuando el numero de ingredientes es 2-4', () => {
                     console.log(`Duración media: ${averageDuration}, Duración redondeada: ${roundedDuration}`);
 
                     // Assert
-                    expect(roundedDuration).toBe(1);
+                    expect(roundedDuration).toBe(2);
                 });
 
             })
