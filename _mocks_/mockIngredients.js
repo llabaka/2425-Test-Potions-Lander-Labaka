@@ -52,7 +52,32 @@ const poisonIngredients = [
 		description: "An elixir that heightens feelings of insanity, shattering sanity.",
 		value: 40,
 		effects: [
-			"lesser_damae_insanity"
+			"lesser_damage_insanity"
+		],
+		image: "/images/equipment/ingredients/damage_12.png",
+		type: "ingredient"
+	},
+	{
+		_id: "6702b46b76863c206a48ccff",
+		name: "Charm's Demise",
+		description: "An ingredient that diminishes charisma, making one less appealing.",
+		value: 40,
+		effects: [
+			"lesser_damage_charisma"
+		],
+		image: "/images/equipment/ingredients/damage_13.png",
+		type: "ingredient"
+	},
+]
+
+const failedPoisonIngredients = [
+	{
+		_id: "6702b46b76863c206a48ccfe",
+		name: "Elixir of Despair",
+		description: "An elixir that heightens feelings of insanity, shattering sanity.",
+		value: 40,
+		effects: [
+			"lesser_insanity"
 		],
 		image: "/images/equipment/ingredients/damage_12.png",
 		type: "ingredient"
@@ -73,5 +98,6 @@ const poisonIngredients = [
 
 module.exports = {
 	antidoteIngredient,
-	poisonIngredients
+	poisonIngredients,
+	failedPoisonIngredients
 };
