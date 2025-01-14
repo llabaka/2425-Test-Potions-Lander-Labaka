@@ -170,6 +170,31 @@ const boostNormalIngredients = [
 	},
 ]
 
+const boostGreaterIngredients = [
+	{
+		_id: "6702b4f876863c206a48cd1e",
+		name: "Titan Vine",
+		description: "A sturdy vine that grants the strength of a titan.",
+		value: 230,
+		effects: [
+			"greater_boost_strength"
+		],
+		image: "/images/ingredients/boost/boost_11.webp",
+		type: "ingredient"
+	},
+	{
+		_id: "6702b4f876863c206a48cd1e",
+		name: "Titan Vine",
+		description: "A sturdy vine that grants the strength of a titan.",
+		value: 230,
+		effects: [
+			"greater_boost_strength"
+		],
+		image: "/images/ingredients/boost/boost_11.webp",
+		type: "ingredient"
+	}
+]
+
 
 module.exports = {
 	antidoteIngredient,
@@ -177,5 +202,6 @@ module.exports = {
 	failedPoisonIngredients,
 	boostIngredients,
 	boostLesserIngredients,
-	boostNormalIngredients
+	boostNormalIngredients,
+	boostGreaterIngredients
 };
