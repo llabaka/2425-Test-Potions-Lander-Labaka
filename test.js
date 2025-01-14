@@ -514,6 +514,44 @@ describe('Cuando el numero de ingredientes es 2-4', () => {
         });
     })
 
+    describe('Cuando todos los ingredientes no tienen el mismo atributo (INT, DEX...)', () => {
+
+            describe('Cuando todos los efectos son diferentes', () => {
+
+                it('No podreemos crear elixir', () => {
+
+                    const ingredient1 = mockIngredients.boostDifferentIngredients[0];
+                    const ingredient2 = mockIngredients.boostDifferentIngredients[1];
+
+                    const fakeIngredients = require('./_mocks_/fake-ingredients.json');
+                    const fakeCurses = require('./_mocks_/fake-curses.json');
+
+                    const ingredients = Ingredients.load(fakeIngredients).ingredients;
+                    const curses = Curses.load(fakeCurses).curses;
+
+                    const ingredientsArray = [ingredient1, ingredient2];
+
+                    console.log("ARRAY DE INGREDIENTES 1 Y 2");
+
+                    console.log(ingredientsArray[0].effects);
+                    console.log(ingredientsArray[1].effects);
+
+                    const cauldron = new Cauldron(ingredients, curses);
+
+                    // Act
+                    const potion = cauldron.createPotion(ingredientsArray);
+
+                    console.log("POTION CREATED IN TEST");
+                    console.log(potion);
+
+                    // Assert
+                    expect(potion).toBeDefined();
+                    expect(potion.name).not.toContain('Elixir');
+                });
+
+            })
+        });
+
 
 
 });

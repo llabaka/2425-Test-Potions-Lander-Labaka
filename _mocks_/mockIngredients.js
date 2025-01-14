@@ -231,6 +231,31 @@ const boostDifferentIngredients = [
 	},
 ]
 
+const boostDifferentAttributeIngredients = [
+	{
+		_id: "6702b4f876863c206a48cd15",
+		name: "Sageleaf",
+		description: "A leaf that sharpens the mind and boosts intelligence.",
+		value: 34,
+		effects: [
+			"lesser_boost_intelligence"
+		],
+		image: "/images/ingredients/boost/boost_2.webp",
+		type: "ingredient"
+	},
+	{
+		_id: "6702b4f876863c206a48cd23",
+		name: "Amber Bloom",
+		description: "A glowing bloom that enhances dexterity",
+		value: 50,
+		effects: [
+			"boost_dexterity"
+		],
+		image: "/images/ingredients/boost/boost_16.webp",
+		type: "ingredient"
+	},
+]
+
 
 module.exports = {
 	antidoteIngredient,
@@ -240,5 +265,6 @@ module.exports = {
 	boostLesserIngredients,
 	boostNormalIngredients,
 	boostGreaterIngredients,
-	boostDifferentIngredients
+	boostDifferentIngredients,
+	boostDifferentAttributeIngredients
 };
