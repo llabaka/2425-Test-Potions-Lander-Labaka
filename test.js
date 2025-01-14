@@ -129,6 +129,7 @@ describe('Cuando todos los ingredientes llevan el efecto Damage', () => {
     });
 });
 
+// POISON TEST
 describe('Si alguno de los ingredientes no tiene el nombre "Damage"', () => {
     it('No podemos crear un antidoto. El nombre de la poción creada no llevará la palabra "Damage"', () => {
 
