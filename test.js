@@ -1,11 +1,11 @@
 const restoreIngredients = require('./_mocks_/antidoteIngredients.js');
-import Cauldron from './cauldron.js'
-import Ingredients from './ingredients';
-import Curses from './curses';
+const Cauldron = require("./cauldron")
+const Ingredients = require("./ingredients")
+const Curses = require("./curses")
 
-describe('Cuando todos los ingredientes llevan el efecto Restore', async () => {
+describe('Cuando todos los ingredientes llevan el efecto Restore', () => {
 
-    describe('Si los ingredientes contienen los efectos necesarios para combatir una enfermedad concreta se creeara el antidoto asociado a la enfermedad', async () => {
+    describe('Si los ingredientes contienen los efectos necesarios para combatir una enfermedad concreta se creeara el antidoto asociado a la enfermedad', () => {
 
         it('El nombre debera ser el correspondiente. Antidote of + "nombre de la enfermedad"', () => {
             // Arrange
@@ -19,6 +19,9 @@ describe('Cuando todos los ingredientes llevan el efecto Restore', async () => {
             const curses = Curses.load(fakeCurses).curses;
 
             const ingredientsArray = [ingredient1, ingredient2];
+
+            console.log(ingredientsArray);
+            
 
             const cauldron = new Cauldron(ingredients, curses);
 

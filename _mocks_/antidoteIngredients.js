@@ -1,4 +1,4 @@
-export const antidoteIngredient = [
+const antidoteIngredient = [
 	{
 		name: "Giant's Tear",
 		description: "A tear known for its ability to enhance strength and fortitude.",
@@ -21,3 +21,5 @@ export const antidoteIngredient = [
     },
 
 ]
+
+module.exports = antidoteIngredient;

@@ -1,6 +1,6 @@
 import Curse from "./curse";
 
-export default class Curses {
+class Curses {
 
     curses: Curse[];
 
@@ -11,5 +11,6 @@ export default class Curses {
     static load(data: any) {
         return new Curses(data.data.map(Curse.from))
     }
-
 }
+
+module.exports = Curses;

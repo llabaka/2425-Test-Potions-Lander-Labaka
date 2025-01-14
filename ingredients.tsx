@@ -1,6 +1,6 @@
 import Ingredient from "./ingredient.tsx";
 
-export default class Ingredients {
+class Ingredients {
 
     ingredients: Ingredient[];
 
@@ -13,3 +13,5 @@ export default class Ingredients {
     }
 
 }
+
+module.exports = Ingredients;

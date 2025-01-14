@@ -5,7 +5,7 @@ import { Effect } from "./potionsInterface.tsx";
 import Curse from "./curse.tsx";
 import { Modifiers } from "./curse.tsx";
 
-export default class Cauldron {
+class Cauldron {
     ingredients: Ingredient[];
     curses: Curse[];
 
@@ -99,7 +99,7 @@ export default class Cauldron {
         const hasRestore = allEffects.some(effect => effect.includes("restore"));
         const hasDamage = allEffects.some(effect => effect.includes("damage"));
 
-        let potionToCreate = null;
+        let potionToCreate;
 
         if (hasRestore) {
             console.log("Has restore");
@@ -618,3 +618,6 @@ export default class Cauldron {
         return new PurificationPotion("Potion of Purification", 0);
     }
 }
+
+module.exports = 
+Cauldron
