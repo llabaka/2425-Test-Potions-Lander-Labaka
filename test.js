@@ -479,8 +479,41 @@ describe('Cuando el numero de ingredientes es 2-4', () => {
                     expect(roundedDuration).toBe(2);
                 });
 
+                it('El nombre de la pocion sera: Modifier + Attribute + Elixir', () => {
+
+                    const ingredient1 = mockIngredients.boostDifferentIngredients[0];
+                    const ingredient2 = mockIngredients.boostDifferentIngredients[2];
+
+                    const fakeIngredients = require('./_mocks_/fake-ingredients.json');
+                    const fakeCurses = require('./_mocks_/fake-curses.json');
+
+                    const ingredients = Ingredients.load(fakeIngredients).ingredients;
+                    const curses = Curses.load(fakeCurses).curses;
+
+                    const ingredientsArray = [ingredient1, ingredient2];
+
+                    console.log("ARRAY DE INGREDIENTES 1 Y 2");
+
+                    console.log(ingredientsArray[0].effects);
+                    console.log(ingredientsArray[1].effects);
+
+                    const cauldron = new Cauldron(ingredients, curses);
+
+                    // Act
+                    const potion = cauldron.createPotion(ingredientsArray);
+
+                    console.log("POTION CREATED IN TEST");
+                    console.log(potion);
+
+                    // Assert
+                    expect(potion).toBeDefined();
+                    expect(potion.name).toBe('Intelligence Elixir');
+                });
+
             })
         });
     })
+
+
 
 });

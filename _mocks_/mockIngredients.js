@@ -218,6 +218,17 @@ const boostDifferentIngredients = [
 		image: "/images/ingredients/boost/boost_18.webp",
 		type: "ingredient"
 	},
+	{
+		_id: "6702b4f876863c206a48cd15",
+		name: "Sageleaf",
+		description: "A leaf that sharpens the mind and boosts intelligence.",
+		value: 34,
+		effects: [
+			"lesser_boost_intelligence"
+		],
+		image: "/images/ingredients/boost/boost_2.webp",
+		type: "ingredient"
+	},
 ]
 
 
