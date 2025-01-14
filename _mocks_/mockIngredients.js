@@ -145,11 +145,37 @@ const boostLesserIngredients = [
 	},
 ]
 
+const boostNormalIngredients = [
+	{
+		_id: "6702b4f876863c206a48cd26",
+		name: "Dreamer's Dew",
+		description: "A dewdrop that enhances charisma and inspires dreams.",
+		value: 72,
+		effects: [
+			"boost_charisma"
+		],
+		image: "/images/ingredients/boost/boost_19.webp",
+		type: "ingredient"
+	},
+	{
+		_id: "6702b4f876863c206a48cd26",
+		name: "Dreamer's Dew",
+		description: "A dewdrop that enhances charisma and inspires dreams.",
+		value: 72,
+		effects: [
+			"boost_charisma"
+		],
+		image: "/images/ingredients/boost/boost_19.webp",
+		type: "ingredient"
+	},
+]
+
 
 module.exports = {
 	antidoteIngredient,
 	poisonIngredients,
 	failedPoisonIngredients,
 	boostIngredients,
-	boostLesserIngredients
+	boostLesserIngredients,
+	boostNormalIngredients
 };
