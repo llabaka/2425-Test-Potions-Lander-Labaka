@@ -516,12 +516,362 @@ describe('Cuando el numero de ingredientes es 2-4', () => {
 
     describe('Cuando todos los ingredientes no tienen el mismo atributo (INT, DEX...)', () => {
 
+        describe('Cuando todos los efectos son diferentes', () => {
+
+            it('No podreemos crear elixir', () => {
+
+                const ingredient1 = mockIngredients.boostDifferentIngredients[0];
+                const ingredient2 = mockIngredients.boostDifferentIngredients[1];
+
+                const fakeIngredients = require('./_mocks_/fake-ingredients.json');
+                const fakeCurses = require('./_mocks_/fake-curses.json');
+
+                const ingredients = Ingredients.load(fakeIngredients).ingredients;
+                const curses = Curses.load(fakeCurses).curses;
+
+                const ingredientsArray = [ingredient1, ingredient2];
+
+                console.log("ARRAY DE INGREDIENTES 1 Y 2");
+
+                console.log(ingredientsArray[0].effects);
+                console.log(ingredientsArray[1].effects);
+
+                const cauldron = new Cauldron(ingredients, curses);
+
+                // Act
+                const potion = cauldron.createPotion(ingredientsArray);
+
+                console.log("POTION CREATED IN TEST");
+                console.log(potion);
+
+                // Assert
+                expect(potion).toBeDefined();
+                expect(potion.name).not.toContain('Elixir');
+            });
+
+        })
+    });
+});
+
+// ELEXIR TESTS
+describe('Cuando el numero de ingredientes es 2-4', () => {
+
+    describe('Cuando los efectos de los ingredientes asociados llevaran los nombres "Calm"', () => {
+
+        describe('Cuando todos los ingredientes tienen el mismo atributo (INT, DEX...)', () => {
+
+            describe('Cuando todos los efectos son tipo least', () => {
+
+                it('El valor resultante del atributo sera la media de los values de los ingredientes. Una vez calculada la media se redondeara al multiplo de 5 inmediatamente inferior.', () => {
+                    // Arrange
+                    const ingredient1 = mockIngredients.calmLeastIngredients[0];
+                    const ingredient2 = mockIngredients.calmLeastIngredients[1];
+
+                    const valueIngredient1 = ingredient1.value;
+                    const valueIngredient2 = ingredient2.value;
+
+                    function roundTo5(value) {
+                        return Math.floor(value / 5) * 5;
+                    }
+
+                    const averageValue = (valueIngredient1 + valueIngredient2) / 2;
+
+                    const roundedValue = roundTo5(averageValue);
+
+                    // Act
+                    console.log(`Media: ${averageValue}, Valor redondeado: ${roundedValue}`);
+
+                    // Assert
+                    expect(roundedValue).toBe(5);
+                });
+
+                it('La duración será la media de duraciones de los efectos de cada ingrediente, redondeada para abajo', () => {
+
+                    // Arrange
+                    const ingredient1 = mockIngredients.calmLeastIngredients[0];
+                    const ingredient2 = mockIngredients.calmLeastIngredients[1];
+
+                    let durationIngredient1 = 0;
+                    let durationIngredient2 = 0;
+
+                    // Act
+                    if (ingredient1.effects[0].includes("least")) {
+
+                        durationIngredient1 = 1;
+                    }
+
+                    if (ingredient2.effects[0].includes("least")) {
+                        durationIngredient2 = 1;
+                    }
+
+                    const averageDuration = (durationIngredient1 + durationIngredient2) / 2;
+                    const roundedDuration = Math.floor(averageDuration);
+
+                    console.log(`Duración media: ${averageDuration}, Duración redondeada: ${roundedDuration}`);
+
+                    // Assert
+                    expect(roundedDuration).toBe(1);
+                });
+
+            })
+        });
+    })
+
+    describe('Cuando los efectos de los ingredientes asociados llevaran los nombres "Boost"', () => {
+
+        describe('Cuando todos los ingredientes tienen el mismo atributo (INT, DEX...)', () => {
+
+            describe('Cuando todos los efectos son tipo lesser', () => {
+
+                it('El valor resultante del atributo sera la media de los values de los ingredientes. Una vez calculada la media se redondeara al multiplo de 5 inmediatamente inferior.', () => {
+                    // Arrange
+                    const ingredient1 = mockIngredients.boostLesserIngredients[0];
+                    const ingredient2 = mockIngredients.boostLesserIngredients[1];
+
+                    const valueIngredient1 = ingredient1.value;
+                    const valueIngredient2 = ingredient2.value;
+
+                    function roundTo5(value) {
+                        return Math.floor(value / 5) * 5;
+                    }
+
+                    const averageValue = (valueIngredient1 + valueIngredient2) / 2;
+
+                    const roundedValue = roundTo5(averageValue);
+
+                    // Act
+                    console.log(`Media: ${averageValue}, Valor redondeado: ${roundedValue}`);
+
+                    // Assert
+                    expect(roundedValue).toBe(30);
+                });
+
+                it('La duración será la media de duraciones de los efectos de cada ingrediente, redondeada para abajo', () => {
+
+                    // Arrange
+                    const ingredient1 = mockIngredients.boostLesserIngredients[0];
+                    const ingredient2 = mockIngredients.boostLesserIngredients[1];
+
+                    let durationIngredient1 = 0;
+                    let durationIngredient2 = 0;
+
+                    // Act
+                    if (ingredient1.effects[0].includes("lesser")) {
+
+                        durationIngredient1 = 1;
+                    }
+
+                    if (ingredient2.effects[0].includes("lesser")) {
+                        durationIngredient2 = 1;
+                    }
+
+                    const averageDuration = (durationIngredient1 + durationIngredient2) / 2;
+                    const roundedDuration = Math.floor(averageDuration);
+
+                    console.log(`Duración media: ${averageDuration}, Duración redondeada: ${roundedDuration}`);
+
+                    // Assert
+                    expect(roundedDuration).toBe(1);
+                });
+
+            })
+        });
+    })
+
+    describe('Cuando los efectos de los ingredientes asociados llevaran los nombres "Boost"', () => {
+
+        describe('Cuando todos los ingredientes tienen el mismo atributo (INT, DEX...)', () => {
+
+            describe('Cuando todos los efectos son tipo normal', () => {
+
+                it('El valor resultante del atributo sera la media de los values de los ingredientes. Una vez calculada la media se redondeara al multiplo de 5 inmediatamente inferior.', () => {
+                    // Arrange
+                    const ingredient1 = mockIngredients.boostNormalIngredients[0];
+                    const ingredient2 = mockIngredients.boostNormalIngredients[1];
+
+                    const valueIngredient1 = ingredient1.value;
+                    const valueIngredient2 = ingredient2.value;
+
+                    function roundTo5(value) {
+                        return Math.floor(value / 5) * 5;
+                    }
+
+                    const averageValue = (valueIngredient1 + valueIngredient2) / 2;
+
+                    const roundedValue = roundTo5(averageValue);
+
+                    // Act
+                    console.log(`Media: ${averageValue}, Valor redondeado: ${roundedValue}`);
+
+                    // Assert
+                    expect(roundedValue).toBe(70);
+                });
+
+                it('La duración será la media de duraciones de los efectos de cada ingrediente, redondeada para abajo', () => {
+
+                    // Arrange
+                    const ingredient1 = mockIngredients.boostNormalIngredients[0];
+                    const ingredient2 = mockIngredients.boostNormalIngredients[1];
+
+                    let durationIngredient1 = 0;
+                    let durationIngredient2 = 0;
+
+                    // Act
+                    if (!ingredient1.effects[0].includes("lesser" || "least" || "greater")) {
+
+                        durationIngredient1 = 2;
+                    }
+
+                    if (!ingredient2.effects[0].includes("lesser" || "least" || "greater")) {
+
+                        durationIngredient2 = 2;
+                    }
+
+                    const averageDuration = (durationIngredient1 + durationIngredient2) / 2;
+                    const roundedDuration = Math.floor(averageDuration);
+
+                    console.log(`Duración media: ${averageDuration}, Duración redondeada: ${roundedDuration}`);
+
+                    // Assert
+                    expect(roundedDuration).toBe(2);
+                });
+
+            })
+        });
+    })
+
+    describe('Cuando los efectos de los ingredientes asociados llevaran los nombres "Boost"', () => {
+
+        describe('Cuando todos los ingredientes tienen el mismo atributo (INT, DEX...)', () => {
+
+            describe('Cuando todos los efectos son tipo greater', () => {
+
+                it('El valor resultante del atributo sera la media de los values de los ingredientes. Una vez calculada la media se redondeara al multiplo de 5 inmediatamente inferior.', () => {
+                    // Arrange
+                    const ingredient1 = mockIngredients.boostGreaterIngredients[0];
+                    const ingredient2 = mockIngredients.boostGreaterIngredients[1];
+
+                    const valueIngredient1 = ingredient1.value;
+                    const valueIngredient2 = ingredient2.value;
+
+                    function roundTo5(value) {
+                        return Math.floor(value / 5) * 5;
+                    }
+
+                    const averageValue = (valueIngredient1 + valueIngredient2) / 2;
+
+                    const roundedValue = roundTo5(averageValue);
+
+                    // Act
+                    console.log(`Media: ${averageValue}, Valor redondeado: ${roundedValue}`);
+
+                    // Assert
+                    expect(roundedValue).toBe(230);
+                });
+
+                it('La duración será la media de duraciones de los efectos de cada ingrediente, redondeada para abajo', () => {
+
+                    // Arrange
+                    const ingredient1 = mockIngredients.boostGreaterIngredients[0];
+                    const ingredient2 = mockIngredients.boostGreaterIngredients[1];
+
+                    let durationIngredient1 = 0;
+                    let durationIngredient2 = 0;
+
+                    console.log("INGREDIENT 1 EFFECTS");
+
+                    console.log(ingredient1.effects);
+
+                    // Act
+                    if (ingredient1.effects[0].includes("greater")) {
+
+                        durationIngredient1 = 3;
+                    }
+
+                    if (ingredient2.effects[0].includes("greater")) {
+
+                        durationIngredient2 = 3;
+                    }
+
+                    const averageDuration = (durationIngredient1 + durationIngredient2) / 2;
+                    const roundedDuration = Math.floor(averageDuration);
+
+                    console.log(`Duración media: ${averageDuration}, Duración redondeada: ${roundedDuration}`);
+
+                    // Assert
+                    expect(roundedDuration).toBe(3);
+                });
+
+            })
+        });
+    })
+
+    describe('Cuando los efectos de los ingredientes asociados llevaran los nombres "Boost"', () => {
+
+        describe('Cuando todos los ingredientes tienen el mismo atributo (INT, DEX...)', () => {
+
             describe('Cuando todos los efectos son diferentes', () => {
 
-                it('No podreemos crear elixir', () => {
-
+                it('El valor resultante del atributo sera la media de los values de los ingredientes. Una vez calculada la media se redondeara al multiplo de 5 inmediatamente inferior.', () => {
+                    // Arrange
                     const ingredient1 = mockIngredients.boostDifferentIngredients[0];
                     const ingredient2 = mockIngredients.boostDifferentIngredients[1];
+
+                    const valueIngredient1 = ingredient1.value;
+                    const valueIngredient2 = ingredient2.value;
+
+                    function roundTo5(value) {
+                        return Math.floor(value / 5) * 5;
+                    }
+
+                    const averageValue = (valueIngredient1 + valueIngredient2) / 2;
+
+                    const roundedValue = roundTo5(averageValue);
+
+                    // Act
+                    console.log(`Media: ${averageValue}, Valor redondeado: ${roundedValue}`);
+
+                    // Assert
+                    expect(roundedValue).toBe(120);
+                });
+
+                it('La duración será la media de duraciones de los efectos de cada ingrediente, redondeada para abajo', () => {
+
+                    // Arrange
+                    const ingredient1 = mockIngredients.boostDifferentIngredients[0];
+                    const ingredient2 = mockIngredients.boostDifferentIngredients[1];
+
+                    let durationIngredient1 = 0;
+                    let durationIngredient2 = 0;
+
+                    console.log("INGREDIENT 1 EFFECTS");
+
+                    console.log(ingredient1.effects);
+
+                    // Act
+                    if (ingredient1.effects[0].includes("greater")) {
+
+                        durationIngredient1 = 3;
+                    }
+
+                    if (ingredient2.effects[0].includes("lesser")) {
+
+                        durationIngredient2 = 1;
+                    }
+
+                    const averageDuration = (durationIngredient1 + durationIngredient2) / 2;
+                    const roundedDuration = Math.floor(averageDuration);
+
+                    console.log(`Duración media: ${averageDuration}, Duración redondeada: ${roundedDuration}`);
+
+                    // Assert
+                    expect(roundedDuration).toBe(2);
+                });
+
+                it('El nombre de la pocion sera: Modifier + Attribute + Elixir', () => {
+
+                    const ingredient1 = mockIngredients.boostDifferentIngredients[0];
+                    const ingredient2 = mockIngredients.boostDifferentIngredients[2];
 
                     const fakeIngredients = require('./_mocks_/fake-ingredients.json');
                     const fakeCurses = require('./_mocks_/fake-curses.json');
@@ -546,12 +896,48 @@ describe('Cuando el numero de ingredientes es 2-4', () => {
 
                     // Assert
                     expect(potion).toBeDefined();
-                    expect(potion.name).not.toContain('Elixir');
+                    expect(potion.name).toBe('Intelligence Elixir');
                 });
 
             })
         });
+    })
 
+    describe('Cuando todos los ingredientes no tienen el mismo atributo (INT, DEX...)', () => {
 
+        describe('Cuando todos los efectos son diferentes', () => {
 
+            it('No podreemos crear elixir', () => {
+
+                const ingredient1 = mockIngredients.boostDifferentIngredients[0];
+                const ingredient2 = mockIngredients.boostDifferentIngredients[1];
+
+                const fakeIngredients = require('./_mocks_/fake-ingredients.json');
+                const fakeCurses = require('./_mocks_/fake-curses.json');
+
+                const ingredients = Ingredients.load(fakeIngredients).ingredients;
+                const curses = Curses.load(fakeCurses).curses;
+
+                const ingredientsArray = [ingredient1, ingredient2];
+
+                console.log("ARRAY DE INGREDIENTES 1 Y 2");
+
+                console.log(ingredientsArray[0].effects);
+                console.log(ingredientsArray[1].effects);
+
+                const cauldron = new Cauldron(ingredients, curses);
+
+                // Act
+                const potion = cauldron.createPotion(ingredientsArray);
+
+                console.log("POTION CREATED IN TEST");
+                console.log(potion);
+
+                // Assert
+                expect(potion).toBeDefined();
+                expect(potion.name).not.toContain('Elixir');
+            });
+
+        })
+    });
 });

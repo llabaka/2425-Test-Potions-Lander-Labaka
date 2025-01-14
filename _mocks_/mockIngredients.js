@@ -256,6 +256,166 @@ const boostDifferentAttributeIngredients = [
 	},
 ]
 
+const calmLeastIngredients = [
+	{
+		_id: "6702b56a76863c206a48cd46",
+		name: "Quieting Root",
+		description: "A root that brings about a gentle peace of mind with every consumption.",
+		value: 6,
+		effects: [
+			"least_calm"
+		],
+		image: "/images/ingredients/calm/calm_4.webp",
+		type: "ingredient"
+	},
+	{
+		_id: "6702b56a76863c206a48cd46",
+		name: "Quieting Root",
+		description: "A root that brings about a gentle peace of mind with every consumption.",
+		value: 6,
+		effects: [
+			"least_calm"
+		],
+		image: "/images/ingredients/calm/calm_4.webp",
+		type: "ingredient"
+	},
+]
+
+const calmLesserIngredients = [
+	{
+		_id: "6702b4f876863c206a48cd25",
+		name: "Mosscap",
+		description: "A mushroom that enhances constitution when brewed into tea.",
+		value: 32,
+		effects: [
+			"lesser_boost_constitution"
+		],
+		image: "/images/ingredients/boost/boost_18.webp",
+		type: "ingredient"
+	},
+	{
+		_id: "6702b4f876863c206a48cd25",
+		name: "Mosscap",
+		description: "A mushroom that enhances constitution when brewed into tea.",
+		value: 32,
+		effects: [
+			"lesser_boost_constitution"
+		],
+		image: "/images/ingredients/boost/boost_18.webp",
+		type: "ingredient"
+	},
+]
+
+const calmNormalIngredients = [
+	{
+		_id: "6702b4f876863c206a48cd26",
+		name: "Dreamer's Dew",
+		description: "A dewdrop that enhances charisma and inspires dreams.",
+		value: 72,
+		effects: [
+			"boost_charisma"
+		],
+		image: "/images/ingredients/boost/boost_19.webp",
+		type: "ingredient"
+	},
+	{
+		_id: "6702b4f876863c206a48cd26",
+		name: "Dreamer's Dew",
+		description: "A dewdrop that enhances charisma and inspires dreams.",
+		value: 72,
+		effects: [
+			"boost_charisma"
+		],
+		image: "/images/ingredients/boost/boost_19.webp",
+		type: "ingredient"
+	},
+]
+
+const calmGreaterIngredients = [
+	{
+		_id: "6702b4f876863c206a48cd1e",
+		name: "Titan Vine",
+		description: "A sturdy vine that grants the strength of a titan.",
+		value: 230,
+		effects: [
+			"greater_boost_strength"
+		],
+		image: "/images/ingredients/boost/boost_11.webp",
+		type: "ingredient"
+	},
+	{
+		_id: "6702b4f876863c206a48cd1e",
+		name: "Titan Vine",
+		description: "A sturdy vine that grants the strength of a titan.",
+		value: 230,
+		effects: [
+			"greater_boost_strength"
+		],
+		image: "/images/ingredients/boost/boost_11.webp",
+		type: "ingredient"
+	}
+]
+
+const calmDifferentIngredients = [
+	{
+		_id: "6702b4f876863c206a48cd19",
+		name: "Astral Herb",
+		description: "A mystical herb that enhances intelligence during spells.",
+		value: 210,
+		effects: [
+			"greater_boost_intelligence"
+		],
+		image: "/images/ingredients/boost/boost_6.webp",
+		type: "ingredient"
+	},
+	{
+		_id: "6702b4f876863c206a48cd25",
+		name: "Mosscap",
+		description: "A mushroom that enhances constitution when brewed into tea.",
+		value: 32,
+		effects: [
+			"lesser_boost_constitution"
+		],
+		image: "/images/ingredients/boost/boost_18.webp",
+		type: "ingredient"
+	},
+	{
+		_id: "6702b4f876863c206a48cd15",
+		name: "Sageleaf",
+		description: "A leaf that sharpens the mind and boosts intelligence.",
+		value: 34,
+		effects: [
+			"lesser_boost_intelligence"
+		],
+		image: "/images/ingredients/boost/boost_2.webp",
+		type: "ingredient"
+	},
+]
+
+const calmDifferentAttributeIngredients = [
+	{
+		_id: "6702b4f876863c206a48cd15",
+		name: "Sageleaf",
+		description: "A leaf that sharpens the mind and boosts intelligence.",
+		value: 34,
+		effects: [
+			"lesser_boost_intelligence"
+		],
+		image: "/images/ingredients/boost/boost_2.webp",
+		type: "ingredient"
+	},
+	{
+		_id: "6702b4f876863c206a48cd23",
+		name: "Amber Bloom",
+		description: "A glowing bloom that enhances dexterity",
+		value: 50,
+		effects: [
+			"boost_dexterity"
+		],
+		image: "/images/ingredients/boost/boost_16.webp",
+		type: "ingredient"
+	},
+]
 
 module.exports = {
 	antidoteIngredient,
@@ -266,5 +426,11 @@ module.exports = {
 	boostNormalIngredients,
 	boostGreaterIngredients,
 	boostDifferentIngredients,
-	boostDifferentAttributeIngredients
+	boostDifferentAttributeIngredients,
+	calmLeastIngredients,
+	calmLesserIngredients,
+	calmNormalIngredients,
+	calmGreaterIngredients,
+	calmDifferentIngredients,
+	calmDifferentAttributeIngredients
 };
