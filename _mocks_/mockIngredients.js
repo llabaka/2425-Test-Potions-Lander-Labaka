@@ -120,10 +120,36 @@ const boostIngredients = [
 	},
 ]
 
+const boostLesserIngredients = [
+	{
+		_id: "6702b4f876863c206a48cd25",
+		name: "Mosscap",
+		description: "A mushroom that enhances constitution when brewed into tea.",
+		value: 32,
+		effects: [
+			"lesser_boost_constitution"
+		],
+		image: "/images/ingredients/boost/boost_18.webp",
+		type: "ingredient"
+	},
+	{
+		_id: "6702b4f876863c206a48cd25",
+		name: "Mosscap",
+		description: "A mushroom that enhances constitution when brewed into tea.",
+		value: 32,
+		effects: [
+			"lesser_boost_constitution"
+		],
+		image: "/images/ingredients/boost/boost_18.webp",
+		type: "ingredient"
+	},
+]
+
 
 module.exports = {
 	antidoteIngredient,
 	poisonIngredients,
 	failedPoisonIngredients,
-	boostIngredients
+	boostIngredients,
+	boostLesserIngredients
 };

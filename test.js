@@ -164,6 +164,7 @@ describe('Si alguno de los ingredientes no tiene el nombre "Damage"', () => {
     });
 });
 
+// ELEXIR TESTS
 describe('Cuando el numero de ingredientes es 2-4', () => {
 
     describe('Cuando los efectos de los ingredientes asociados llevaran los nombres "Boost"', () => {
@@ -211,6 +212,67 @@ describe('Cuando el numero de ingredientes es 2-4', () => {
                     }
 
                     if (ingredient2.effects[0].includes("least")) {
+                        durationIngredient2 = 1;
+                    }
+
+                    const averageDuration = (durationIngredient1 + durationIngredient2) / 2;
+                    const roundedDuration = Math.floor(averageDuration);
+
+                    console.log(`Duración media: ${averageDuration}, Duración redondeada: ${roundedDuration}`);
+
+                    // Assert
+                    expect(roundedDuration).toBe(1);
+                });
+
+            })
+        });
+    })
+
+    describe('Cuando los efectos de los ingredientes asociados llevaran los nombres "Boost"', () => {
+
+        describe('Cuando todos los ingredientes tienen el mismo atributo (INT, DEX...)', () => {
+
+            describe('Cuando todos los efectos son tipo lesser', () => {
+
+                it('El valor resultante del atributo sera la media de los values de los ingredientes. Una vez calculada la media se redondeara al multiplo de 5 inmediatamente inferior.', () => {
+                    // Arrange
+                    const ingredient1 = mockIngredients.boostLesserIngredients[0];
+                    const ingredient2 = mockIngredients.boostLesserIngredients[1];
+
+                    const valueIngredient1 = ingredient1.value;
+                    const valueIngredient2 = ingredient2.value;
+
+                    function roundTo5(value) {
+                        return Math.floor(value / 5) * 5;
+                    }
+
+                    const averageValue = (valueIngredient1 + valueIngredient2) / 2;
+
+                    const roundedValue = roundTo5(averageValue);
+
+                    // Act
+                    console.log(`Media: ${averageValue}, Valor redondeado: ${roundedValue}`);
+
+                    // Assert
+                    expect(roundedValue).toBe(30);
+                });
+
+                it('La duración será la media de duraciones de los efectos de cada ingrediente, redondeada para abajo', () => {
+
+                    // Arrange
+                    const ingredient1 = mockIngredients.boostLesserIngredients[0];
+                    const ingredient2 = mockIngredients.boostLesserIngredients[1];
+
+                    let durationIngredient1 = 0;
+                    let durationIngredient2 = 0;
+
+                    // Act
+                    if (ingredient1.effects[0].includes("lesser")) {
+
+                        durationIngredient1 = 1;
+                    }
+
+                    if (ingredient2.effects[0].includes("lesser")) {
                         durationIngredient2 = 1;
                     }
 
